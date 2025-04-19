@@ -17,7 +17,7 @@ class DecryptStream extends Transform {
             this.push(decrypted);
             callback();
         } catch (err) {
-            callback(err); // Pass the error to the stream
+            callback(err);
         }
     }
 }
@@ -32,8 +32,8 @@ try {
     // const vectorHex = fs.readFileSync('vectorKey.txt', 'utf-8').trim();
     const vector = Buffer.from("25f802b65f07af172772526ae693842a", 'hex');
 
-    const inputFileName = 'inp.txt.nh'; // Encrypted file
-    const outputFileName = 'inp.txt'; // Decrypted file
+    const inputFileName = 'inp.txt.nh'; 
+    const outputFileName = 'inp.txt'; 
 
     const readableStream = fs.createReadStream(inputFileName);
     const decryptStream = new DecryptStream(key, vector);
